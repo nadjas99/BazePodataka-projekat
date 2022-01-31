@@ -8,6 +8,7 @@ package domenski.objekat.entiteti;
 import domenski.objekat.DomenskiObjekat;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,18 +23,32 @@ public class GeneralniIzvodjac extends DomenskiObjekat{
     private Mesto mesto;
     private Adresa adresa;
     private Direktor direktor;
+
+    public GeneralniIzvodjac() {
+    }
+    
+
+    public GeneralniIzvodjac(Long maticniBroj, String tekuciRacun, Long pib, String ime, Mesto mesto, Adresa adresa, Direktor direktor) {
+        this.maticniBroj = maticniBroj;
+        this.tekuciRacun = tekuciRacun;
+        this.pib = pib;
+        this.ime = ime;
+        this.mesto = mesto;
+        this.adresa = adresa;
+        this.direktor = direktor;
+    }
     
     
     
 
     @Override
     public String getTableName() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "generalni_izvodjac g"; //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public String getAllColumnNames() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return"g.maticni_broj_izvodjaca, g.racun_tekuci.get_tekuci(), g.pib_izvodjaca,g.ime_firme_izvodjaca,g.id_mesto,g.id_ulica,g.id_direktor"; //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -68,12 +83,25 @@ public class GeneralniIzvodjac extends DomenskiObjekat{
 
     @Override
     public List<DomenskiObjekat> getObjectsFromResultSet(ResultSet rs) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         List<DomenskiObjekat> izvodjaci = new ArrayList();
+
+        while (rs.next()) {
+            long maticni = rs.getLong("maticni_broj_izvodjaca");
+            String tekuci = rs.getString("g.racun_tekuci.get_tekuci()");
+            long pib = rs.getLong("pib_izvodjaca");
+            String ime = rs.getString("ime_firme_izvodjaca");
+            
+            
+            GeneralniIzvodjac izvodjac = new GeneralniIzvodjac(maticni,tekuci, pib, ime, null, null,null);
+            izvodjaci.add(izvodjac);
+        }
+
+        return izvodjaci;//To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public String getOrderByColumn() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "g.maticni_broj_izvodjaca"; //To change body of generated methods, choose Tools | Templates.
     }
 
     public Long getMaticniBroj() {

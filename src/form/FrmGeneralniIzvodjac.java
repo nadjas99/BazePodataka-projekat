@@ -5,6 +5,9 @@
  */
 package form;
 
+import javax.swing.JTable;
+import kontroleri.GeneralniIzvodjacController;
+
 /**
  *
  * @author Nadja
@@ -14,8 +17,10 @@ public class FrmGeneralniIzvodjac extends javax.swing.JFrame {
     /**
      * Creates new form FrmGeneralniIzvodjac
      */
+    GeneralniIzvodjacController cont=new GeneralniIzvodjacController(this);
     public FrmGeneralniIzvodjac() {
         initComponents();
+        
     }
 
     /**
@@ -28,11 +33,13 @@ public class FrmGeneralniIzvodjac extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblIzvodjaci = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblIzvodjaci.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -43,7 +50,11 @@ public class FrmGeneralniIzvodjac extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblIzvodjaci);
+
+        jButton1.setText("jButton1");
+
+        jButton2.setText("jButton2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -51,7 +62,10 @@ public class FrmGeneralniIzvodjac extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addContainerGap(162, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -59,7 +73,11 @@ public class FrmGeneralniIzvodjac extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(312, Short.MAX_VALUE))
+                .addGap(52, 52, 52)
+                .addComponent(jButton1)
+                .addGap(30, 30, 30)
+                .addComponent(jButton2)
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         pack();
@@ -100,8 +118,19 @@ public class FrmGeneralniIzvodjac extends javax.swing.JFrame {
         });
     }
 
+    public JTable getTblIzvodjaci() {
+        return tblIzvodjaci;
+    }
+
+    public void setTblIzvodjaci(JTable tblIzvodjaci) {
+        this.tblIzvodjaci = tblIzvodjaci;
+    }
+    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblIzvodjaci;
     // End of variables declaration//GEN-END:variables
 }

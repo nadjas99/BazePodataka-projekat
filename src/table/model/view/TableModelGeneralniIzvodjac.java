@@ -18,6 +18,11 @@ public class TableModelGeneralniIzvodjac extends AbstractTableModel{
     private final Class[] columnClasses = {Long.class, Long.class, String.class, String.class, Integer.class};
     private ArrayList<GeneralniIzvodjac> izvodjaci;
 
+    public TableModelGeneralniIzvodjac(ArrayList<GeneralniIzvodjac> izvodjaci) {
+        this.izvodjaci = izvodjaci;
+    }
+    
+
     @Override
     public int getRowCount() {
      return izvodjaci.size();//To change body of generated methods, choose Tools | Templates.
